@@ -2,7 +2,7 @@
 Kubernetes (k8s) is an open-source container orchestration tool that automates the deployment, scaling, and management of containerized applications. Kubeadm is a popular tool used to set up a Kubernetes cluster, while Containerd is a lightweight container runtime, and Calico is a network plugin used to provide network policies in Kubernetes. In this article, we will go through the steps to deploy a Kubernetes cluster with Kubeadm on Debian machines with Containerd and Calico.
 
 # Node configuration
-Before deploying a Kubernetes cluster, ensure that you have the proper hostnames set up on all nodes. In this example, we will have one master node and two worker nodes. Follow the below steps to set up the hostnames on all nodes.
+Before deploying a Kubernetes cluster, it is essential to ensure that the proper hostnames are set up on all nodes. In this example, we will have one master node and two worker nodes. Follow the below steps to set up the hostnames on all nodes.
 
 ## On master
 ```bash
