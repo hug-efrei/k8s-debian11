@@ -124,5 +124,19 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
+## On workers
 
+You can now join your workers to the cluster.
+
+```bash
+sudo kubeadm join XXX
+```
+
+# Network Add-on install
+
+Now that your cluster is up and running, you can install the Calico network add-on.
+
+```bash
 kubectl apply -f https://projectcalico.docs.tigera.io/v3.25/manifests/calico.yaml
+```
+
