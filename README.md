@@ -4,17 +4,23 @@ k8s install on debian 11 with kubeadm, containerd et calico
 # Node configuration
 First, make sure you have the proper hostnames set up on all nodes:
 
-### On master
-`sudo hostnamectl set-hostname "master"`
+## On master
+```bash
+sudo hostnamectl set-hostname "master"
+```
 
-### On worker1
-`sudo hostnamectl set-hostname "worker1"`
+## On worker1
+```bash
+sudo hostnamectl set-hostname "worker1"
+```
 
-### On worker2
-`sudo hostnamectl set-hostname "worker2"`
+## On worker2
+```bash
+sudo hostnamectl set-hostname "worker2"
+```
 
 ## On all nodes
-`
+```bash
 sudo hostnamectl set-hostname "master"
 
 cat <<EOF | sudo tee /etc/hosts
