@@ -1,11 +1,20 @@
 # k8s-debian11
-k8s cluster deployment on Debian 11 nodes
-#  k8s install on debian 11 with kubeadm, containerd et calico
+k8s install on debian 11 with kubeadm, containerd et calico
 
-## sysprep
+# Node configuration
+First, make sure you have the proper hostnames set up on all nodes:
 
 ### On master
-'''
+`sudo hostnamectl set-hostname "master"`
+
+### On worker1
+`sudo hostnamectl set-hostname "worker1"`
+
+### On worker2
+`sudo hostnamectl set-hostname "worker2"`
+
+## On all nodes
+`
 sudo hostnamectl set-hostname "master"
 
 cat <<EOF | sudo tee /etc/hosts
@@ -52,79 +61,7 @@ sudo install -m 755 runc.amd64 /usr/local/sbin/runc
 wget https://github.com/containernetworking/plugins/releases/download/v1.2.0/cni-plugins-linux-amd64-v1.2.0.tgz
 sudo mkdir -p /opt/cni/bin
 sudo tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.2.0.tgz
-
-'''
-
-
-### On worker1
-'''
-sudo hostnamectl set-hostname "worker1"
-
-cat <<EOF | sudo tee /etc/hosts
-192.168.1.11       master
-192.168.1.12       worker1
-192.168.1.13       worker2
-EOF
-
-sudo swapoff -a
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
-
-cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
-overlay
-br_netfilter
-EOF
-
-sudo modprobe overlay
-sudo modprobe br_netfilter
-
-cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-k8s.conf
-net.bridge.bridge-nf-call-iptables = 1
-net.ipv4.ip_forward = 1
-net.bridge.bridge-nf-call-ip6tables = 1
-EOF
-
-sudo sysctl --system
-
-sudo apt  update
-sudo apt -y install containerd
-
-containerd config default | sudo tee /etc/containerd/config.toml >/dev/null 2>&1
-'''
-
-### On worker2
-'''
-sudo hostnamectl set-hostname "worker2"
-
-cat <<EOF | sudo tee /etc/hosts
-192.168.1.11       master
-192.168.1.12       worker1
-192.168.1.13       worker2
-EOF
-
-sudo swapoff -a
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
-
-cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
-overlay
-br_netfilter
-EOF
-
-sudo modprobe overlay
-sudo modprobe br_netfilter
-
-cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-k8s.conf
-net.bridge.bridge-nf-call-iptables = 1
-net.ipv4.ip_forward = 1
-net.bridge.bridge-nf-call-ip6tables = 1
-EOF
-
-sudo sysctl --system
-
-sudo apt  update
-sudo apt -y install containerd ##### attention installer une version >=1.6
-
-containerd config default | sudo tee /etc/containerd/config.toml >/dev/null 2>&1
-'''
+`
 
 ## cluster install
 
