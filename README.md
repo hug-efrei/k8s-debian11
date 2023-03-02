@@ -140,3 +140,14 @@ Now that your cluster is up and running, you can install the Calico network add-
 kubectl apply -f https://projectcalico.docs.tigera.io/v3.25/manifests/calico.yaml
 ```
 
+# Dashboard
+Now that you can install one dashboard with command ,it is like btop or htop.
+
+Run the below command to install the latest binary. Run with sudo if you don't have write access to /usr/local/bin. Else the script will install to current directory
+
+```bash
+curl https://raw.githubusercontent.com/kdash-rs/kdash/main/deployment/getLatest.sh | bash
+```
+
+![image](https://user-images.githubusercontent.com/890157/222339967-2c21c9c5-699a-4a3d-a538-87f3a32d98f9.png)
+
