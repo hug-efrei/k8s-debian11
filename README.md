@@ -60,8 +60,8 @@ sudo sysctl --system
 Now, install Containerd and its dependencies.
 
 ```bash
-wget https://github.com/containerd/containerd/releases/download/v1.6.16/containerd-1.6.16-linux-amd64.tar.gz
-sudo tar Cxzvf /usr/local containerd-1.6.16-linux-amd64.tar.gz
+wget https://github.com/containerd/containerd/releases/download/v1.6.19/containerd-1.6.19-linux-amd64.tar.gz
+sudo tar Cxzvf /usr/local containerd-1.6.19-linux-amd64.tar.gz
 sudo mkdir -p /usr/local/lib/systemd/system/
 sudo wget -P /usr/local/lib/systemd/system/ https://raw.githubusercontent.com/containerd/containerd/main/containerd.service
 
