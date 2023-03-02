@@ -60,8 +60,8 @@ sudo sysctl --system
 Now, install Containerd and its dependencies.
 
 ```bash
-wget https://github.com/containerd/containerd/releases/download/v1.6.16/containerd-1.6.16-linux-amd64.tar.gz
-sudo tar Cxzvf /usr/local containerd-1.6.16-linux-amd64.tar.gz
+wget https://github.com/containerd/containerd/releases/download/v1.6.19/containerd-1.6.19-linux-amd64.tar.gz
+sudo tar Cxzvf /usr/local containerd-1.6.19-linux-amd64.tar.gz
 sudo mkdir -p /usr/local/lib/systemd/system/
 sudo wget -P /usr/local/lib/systemd/system/ https://raw.githubusercontent.com/containerd/containerd/main/containerd.service
 
@@ -140,3 +140,26 @@ Now that your cluster is up and running, you can install the Calico network add-
 kubectl apply -f https://projectcalico.docs.tigera.io/v3.25/manifests/calico.yaml
 ```
 
+# Dashboard
+Now that you can install one dashboard with command ,it is like btop or htop.
+
+Run the below command to install the latest binary. Run with sudo if you don't have write access to /usr/local/bin. Else the script will install to current directory
+
+```bash
+curl https://raw.githubusercontent.com/kdash-rs/kdash/main/deployment/getLatest.sh | bash
+```
+
+![image](https://user-images.githubusercontent.com/890157/222339967-2c21c9c5-699a-4a3d-a538-87f3a32d98f9.png)
+
+
+# helm
+Let's install helm.
+```bash
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+```
+Common actions for Helm:
+
+- helm search:    search for charts
+- helm pull:      download a chart to your local directory to view
+- helm install:   upload the chart to Kubernetes
+- helm list:      list releases of charts
