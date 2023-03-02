@@ -151,3 +151,15 @@ curl https://raw.githubusercontent.com/kdash-rs/kdash/main/deployment/getLatest.
 
 ![image](https://user-images.githubusercontent.com/890157/222339967-2c21c9c5-699a-4a3d-a538-87f3a32d98f9.png)
 
+
+# helm
+Let's install helm.
+```bash
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+```
+Common actions for Helm:
+
+- helm search:    search for charts
+- helm pull:      download a chart to your local directory to view
+- helm install:   upload the chart to Kubernetes
+- helm list:      list releases of charts
